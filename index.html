@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheet Access Panel</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #141e30, #243b55);
+}
+
+.container {
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    width: 350px;
+    text-align: center;
+    color: white;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: rgba(255,255,255,0.35);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>📂 Sheet Access</h2>
+
+    <!-- 🔗 EDIT LINKS HERE -->
+    <button class="button" onclick="openLink('https://example.com/sheet1.xlsx')">
+        Shift 1 Sheet
+    </button>
+
+    <button class="button" onclick="openLink('https://example.com/sheet2.xlsx')">
+        Shift 2 Sheet
+    </button>
+
+    <button class="button" onclick="openLink('https://example.com/inventory.xlsx')">
+        Inventory Sheet
+    </button>
+
+</div>
+
+<script>
+function openLink(url) {
+    window.open(url, "_blank");
+}
+
+// 🚫 Disable Right Click
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// 🚫 Disable Copy
+document.addEventListener('copy', e => e.preventDefault());
+
+// 🚫 Disable Text Selection
+document.addEventListener('selectstart', e => e.preventDefault());
+
+// 🚫 Block DevTools (basic)
+document.onkeydown = function(e) {
+    if (e.keyCode == 123 || 
+       (e.ctrlKey && e.shiftKey && e.keyCode == 73) || 
+       (e.ctrlKey && e.keyCode == 85)) {
+        return false;
+    }
+}
+</script>
+
+</body>
+</html>
